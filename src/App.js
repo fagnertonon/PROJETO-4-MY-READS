@@ -1,5 +1,3 @@
-//https://github.com/tsega/udacity-reactnd-project-myreads/tree/master/src
-
 import React from 'react'
 import Shelf from "./Shelf";
 import Search from "./Search";
@@ -108,4 +106,3 @@ class BooksApp extends React.Component {
 }
 
 export default BooksApp
-
