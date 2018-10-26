@@ -12,9 +12,6 @@ class Book extends Component {
         const { book } = this.props;
         const coverImg = book.imageLinks ? book.imageLinks.thumbnail : noCover;
 
-        console.log( book.title);
-        console.log( book.imageLinks);
-        console.log(coverImg);
         return (
             <div className="book">
                 <div className="book-top" id={book.id}>
