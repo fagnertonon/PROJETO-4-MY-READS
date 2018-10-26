@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ShelfChanger from "./ShelfChanger"
+import noCover from './images/no-cover-image.png';
 
 class Book extends Component {
     static propTypes = {
@@ -9,17 +10,22 @@ class Book extends Component {
     };
     render() {
         const { book } = this.props;
+        const coverImg = book.imageLinks ? book.imageLinks.thumbnail : noCover;
+
+        console.log( book.title);
+        console.log( book.imageLinks);
+        console.log(coverImg);
         return (
             <div className="book">
                 <div className="book-top" id={book.id}>
-                    <div className="book-cover" style={{ backgroundImage: `url("${book.imageLinks.thumbnail})"` }}></div>
+                    <div className="book-cover" style={{ backgroundImage: `url("${coverImg}")` }}></div>
 
                     <ShelfChanger
                         book={book}
                         changeShelf={this.props.changeShelf}
                     >
                     </ShelfChanger>
-                    
+
                 </div>
                 <div className="book-title">{book.title}</div>
                 <div className="book-authors">{book.author}</div>

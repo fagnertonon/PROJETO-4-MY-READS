@@ -14,16 +14,12 @@ class BooksApp extends React.Component {
     this.fetchBooks();
   }
 
-  fetchBooks() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
-      console.log(books)
-    });
+  async fetchBooks() {
+    const books = await BooksAPI.getAll()
+    this.setState({ books });
   }
 
   getShelfBooks(shelfName) {
-    console.log(shelfName);
-    console.log(this.state.books.filter((b) => b.shelf === shelfName));
     return this.state.books.filter((b) => b.shelf === shelfName)
   }
 
@@ -38,8 +34,7 @@ class BooksApp extends React.Component {
   };
   updateQuery = (query) => {
     if (query) {
-      BooksAPI.search(query, this.MAX_RESULTS).then((books) => {
-        // if the BookAPI.search worked properly, this would be unnecessary
+      BooksAPI.search(query, 30).then((books) => {
         if (books.length) {
           books.forEach((book, index) => {
             let myBook = this.state.books.find((b) => b.id === book.id);
